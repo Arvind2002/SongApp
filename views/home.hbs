@@ -1,0 +1,37 @@
+<h1>Home</h1>
+<h3>Welcome {{name}}</h3>
+<p>Here are your playlists</p>
+{{>_add_btn.playlists}}
+{{#if playlists}}
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Created At</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each playlists}}
+        <tr>
+            <td><a href="/playlists/songs/{{_id}}">{{Name}}</a></td>
+            <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
+            <td>
+                <a href="/playlists/edit/{{_id}}" class="btn btn-float">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <form action="/playlists/{{_id}}" method="POST" id="delete-form">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn red">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            </td>        
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<p>You have not created any playlist</p>
+{{/if}}
