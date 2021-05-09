@@ -167,9 +167,9 @@ router.put('/playlists/:id', ensureAuth, async (req, res) => {
       return res.render('error/404')
     }
      else {
-      
+      const date=Date.now()
+      playlist = await Playlists.findOneAndUpdate({Name:req.body.status },{ $set: {LastModified:date}}).lean()
       playlist = await Playlists.findOneAndUpdate({ Name:req.body.status },{ $push: { songs: song,}})
-      playlist = await Playlists.findOneAndUpdate({_id:req.params.id },{ $set: {LastModified:Date.now()}}).lean()
       res.redirect('/songs')
     }
   } catch (err) {

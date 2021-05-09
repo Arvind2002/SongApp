@@ -2,7 +2,7 @@ const moment = require('moment')
 
 module.exports = {
   formatDate: function (date, format) {
-    return moment(date).utc().format(format)
+    return moment(date).utcOffset("+5:30").format(format)
   },
   select: function (selected, options) {
     return options
