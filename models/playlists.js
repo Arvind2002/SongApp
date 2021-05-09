@@ -31,7 +31,8 @@ const PlaylistsSchema = new mongoose.Schema({
       },
     }],
     LastModified: {
-        type: String,
+        type: Date,
+        default: Date.now,
     }
   })
 

@@ -146,6 +146,7 @@ router.get('/playlists/:id', ensureAuth, async (req, res) => {
     }
 
     else {
+
       res.render('songs/playlist', {
         song,
         playlist
@@ -157,7 +158,7 @@ router.get('/playlists/:id', ensureAuth, async (req, res) => {
   }
 })
 
-//show songs in a playlist
+//add songs to a playlist PUT request
 router.put('/playlists/:id', ensureAuth, async (req, res) => {
   try {
     let song = await Songs.findById(req.params.id).lean()
@@ -165,10 +166,10 @@ router.put('/playlists/:id', ensureAuth, async (req, res) => {
     if (!song) {
       return res.render('error/404')
     }
-
      else {
       
       playlist = await Playlists.findOneAndUpdate({ Name:req.body.status },{ $push: { songs: song,}})
+      playlist = await Playlists.findOneAndUpdate({_id:req.params.id },{ $set: {LastModified:Date.now()}}).lean()
       res.redirect('/songs')
     }
   } catch (err) {
@@ -176,7 +177,5 @@ router.put('/playlists/:id', ensureAuth, async (req, res) => {
     return res.render('error/500')
   }
 })
-
-
 
 module.exports=router

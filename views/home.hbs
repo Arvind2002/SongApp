@@ -8,6 +8,7 @@
         <tr>
             <th>Name</th>
             <th>Created At</th>
+            <th>Last Modified</th>
             <th></th>
         </tr>
     </thead>
@@ -16,6 +17,7 @@
         <tr>
             <td><a href="/playlists/songs/{{_id}}">{{Name}}</a></td>
             <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
+            <td>{{formatDate LastModified 'MMMM Do YYYY, h:mm:ss a'}}</td>
             <td>
                 <a href="/playlists/edit/{{_id}}" class="btn btn-float">
                     <i class="fas fa-edit"></i>

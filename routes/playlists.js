@@ -99,29 +99,11 @@ router.get('/songs/add/:id',ensureAuth,async(req,res)=>{
 
 
 //Adding song POST request
-// router.post('songs/add/:id1/:id2', ensureAuth, async (req, res) => {
-//   try {
-//     console.log(req.params.id1)
-//     const song = await Songs.findById(req.params.id1).lean()
-//     const playlist=await Playlists.findById(req.params.id2).lean()
-//     if (!song) {
-//       return res.render('error/404')
-//     }
-//     else {
-//       await playlist.songs.add({song})
-//       await Playlists.add(playlist)
-//       res.redirect('/home')
-//     }
 
-//   } catch (err) {
-//     console.error(err)
-//     return res.render('error/500')
-//   }
-// })
 router.post('songs/add/:id',ensureAuth,async(req,res)=>{
   try{
     const id=req.params.id
-    const playlist=await Playlists.findById(id).lean()
+    let playlist=await Playlists.findById(id).lean()
     const song=await Songs.findOne(link=req.body.link)
     console.log(playlist)
     consile.log(song)
@@ -147,6 +129,7 @@ router.put('/:id', ensureAuth, async (req, res) => {
         new: true,
         runValidators: true,
       })
+      playlist = await Playlists.findOneAndUpdate({_id:req.params.id },{ $set: {LastModified:Date.now()}}).lean()
       res.redirect(303,'/home')
     }
   } catch (err) {
@@ -187,7 +170,7 @@ router.get('/songs/:id1/:id2', ensureAuth, async (req, res) => {
       }
       else {
         playlist = await Playlists.findOneAndUpdate({ _id:req.params.id1 },{ $pull: { songs:{_id: req.params.id2,}}}).lean()
-        console.log(req.params.id2)
+      playlist = await Playlists.findOneAndUpdate({_id:req.params.id },{ $set: {LastModified:Date.now()}}).lean()
         res.redirect('/playlists/songs/'+req.params.id1)
       }
     } catch (err) {
