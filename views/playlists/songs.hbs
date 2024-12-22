@@ -1,0 +1,39 @@
+<h4>{{Name}}</h4>
+{{#if songs}}
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>duration</th>
+            <th>Artist</th>
+            <th>Link</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each songs}}
+        <tr>
+            <td>{{Name}}</td>
+            <td>{{duration}}</td>
+            <td>{{Artist}}</td>
+                <td><a href={{link}}>{{link}}</a></td> 
+            <td>
+                 <form action="{{../_id}}/{{_id}}" method="POST" id="delete-form">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn red">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{else}}
+<p>No songs available</p>
+{{/if}}
+<br>
+<div class="row">
+            <a href="/home" class="btn orange">See All Playlists</a>
+        </div>

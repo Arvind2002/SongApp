@@ -1,0 +1,73 @@
+<h3>Add Songs to {{playlist.Name}}</h3>
+       <div>
+           {{#if playlist.songs}}
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>duration</th>
+            <th>Artist</th>
+            <th>Link</th>
+            <th>NumberOfPlays</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each songs}}
+        <tr>
+            <td>{{songs.Name}}</td>
+            <td>{{songs.duration}}</td>
+            <td>{{songs.Artist}}</td>
+            <td><a href={{songs.link}} onclick="incrementPlays({{songs.NumberOfPlays}})">{{songs.link}}</a></td>  
+            <td>{{songs.NumberOfPlays}}</td>
+            <td>
+                
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{else}}
+<p>No songs added yet</p>
+{{/if}}
+       </div>
+<div>
+<p>Here are the available songs</p>
+ <form action="/playlists/songs/add/{{playlist._id}}" method="POST" id="add-form">
+{{#if songs}}
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>duration</th>
+            <th>Artist</th>
+            <th>Link</th>
+            <th>NumberOfPlays</th>
+            <th>Add</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each songs}}
+        <tr>
+           
+            <td>{{Name}}</td>
+            <td>{{duration}}</td>
+            <td>{{Artist}}</td>
+            <td><a href={{link}} onclick="incrementPlays({{NumberOfPlays}})">{{link}}</a></td>  
+            <td>{{NumberOfPlays}}</td>
+            <td>
+                    {{!-- <input type="hidden" name="_method" value="PUT"> --}}
+                    <button type="submit" class="btn red">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<p>No songs available</p>
+{{/if}}
+</div>

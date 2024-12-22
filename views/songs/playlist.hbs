@@ -1,0 +1,49 @@
+<h3>Select the playlist to which {{song.Name}} should be added</h3>
+{{!-- {{#if playlists}}
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each playlists}}
+        <tr>
+            <td><a href="/playlists/songs/{{_id}}">{{Name}}</a></td>
+            <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
+                 
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<p>You have not created any playlist</p>
+{{/if}} --}}
+ {{!-- <form action="/stories/{{story._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT"> --}}
+ <form action="/songs/playlists/{{song._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+{{#if playlist}}
+
+           <div class="row">
+            <div class="input-field">
+                <select id="status" name="status">
+                    {{#select Name}}
+                    {{!-- <option value="" selected>choose a playlist</option>n> --}}
+                    {{#each playlist}}
+                    <option value={{Name}}>{{Name}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+                <label for="status">Playlist</label>
+            </div>
+
+    {{else}}
+<p>You have not created any playlist</p>
+{{/if}}
+<div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/songs" class="btn orange">Cancel</a>
+        </div>
+</form>

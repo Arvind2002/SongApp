@@ -1,0 +1,85 @@
+<h3>Add Playlist</h3>
+<div class="row">
+    <form action="/playlists" method="POST" class="col s12">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="Name" name="Name">
+                <label for="title">Name</label>
+            </div>
+        </div>
+       
+</div>
+{{!-- 
+<h3>Select songs</h3>
+<div id="table-wrapper">
+  <div id="table-scroll">
+      {{#if songs}}
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>duration</th>
+            <th>Artist</th>
+            <th>NumberOfPlays</th>
+            <th>Add</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each songs}}
+        <tr>
+            <td>{{Name}}</td>
+            <td>{{duration}}</td>
+            <td>{{Artist}}</td>  
+            <td>{{NumberOfPlays}}</td>
+            <td>
+                <div class="checkbox">
+                  <label><input type="checkbox" value={{_id}}></label>
+                </div>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{else}}
+<p>No song available</p>
+{{/if}}
+</div>
+
+<h3>Added songs</h3>
+<div id="table-wrapper">
+  <div id="table-scroll">
+      {{#if playlist.songs}}
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>duration</th>
+            <th>Artist</th>
+            <th>NumberOfPlays</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each playlist.songs}}
+        <tr>
+            <td>{{playlist.songs.Name}}</td>
+            <td>{{playlist.songs.duration}}</td>
+            <td>{{playlist.songs.Artist}}</td>  
+            <td>{{playlist.songs.NumberOfPlays}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{else}}
+<p>No songs added yet</p>
+{{/if}}
+</div>
+ --}}
+ <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/home" class="btn orange">Cancel</a>
+        </div>
+    </form>
+      </div>
+

@@ -1,0 +1,40 @@
+p{
+    margin: 10px 0 !important;
+}
+.login-container{
+    width: 400px;
+    margin-top: 50px;
+    text-align: center;
+}
+table {
+    width: 100%;
+  }
+  
+  table, th, td {
+    border: 1px solid lightgrey;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 2px 4px;
+  }
+
+  #table-wrapper {
+    position:relative;
+  }
+  #table-scroll {
+    height:150px;
+    overflow:auto;  
+    margin-top:20px;
+  }
+  #table-wrapper table {
+    width:100%;
+  
+  }
+  .btn-float {
+    float: left;
+    margin-right: 10px;
+  }
+  .checkbox {
+    display: inline-block
+  }

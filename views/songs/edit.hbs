@@ -1,0 +1,38 @@
+<h3>Edit Song Details</h3>
+<div class="row">
+    <form action="/songs/{{song._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="Name" name="Name" value="{{song.Name}}">
+                <label for="Name">Name</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="duration" name="duration" value="{{song.duration}}">
+                <label for="duration">Duration</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="Artist" name="Artist" value="{{song.Artist}}">
+                <label for="Artist">Artist</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="link" name="link" value="{{song.link}}">
+                <label for="link">link</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/songs" class="btn orange">Cancel</a>
+        </div>
+    </form>
+</div>
